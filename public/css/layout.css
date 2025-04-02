@@ -32,6 +32,9 @@ html, body {
 
 #bot_bar_left {
     background-color: yellow;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    background-color: #125;
 }
 
 #bot_bar_right {
@@ -39,7 +42,7 @@ html, body {
     flex-direction: row;
 }
 #top_bar_left {
-    background-color: yellow;
+    background-color: #335;
 }
 
 #top_bar_right {

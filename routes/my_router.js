@@ -7,8 +7,20 @@ const project_root = require("../project_root").project_root;
 router.get('/css/:filename', function(req, res) {
   res.sendFile(project_root + "/public/css/" + req.params.filename)
 })
+router.get('/control/:filename', function(req, res) {
+  res.sendFile(project_root + "/public/control/" + req.params.filename)
+})
+router.get('/draw/:filename', function(req, res) {
+  res.sendFile(project_root + "/public/draw/" + req.params.filename)
+})
 router.get('/layout/:filename', function(req, res) {
   res.sendFile(project_root + "/public/layout/" + req.params.filename)
+})
+router.get('/verify/:filename', function(req, res) {
+  res.sendFile(project_root + "/public/verify/" + req.params.filename)
+})
+router.get('/types/:filename', function(req, res) {
+  res.sendFile(project_root + "/public/types/" + req.params.filename)
 })
 router.get('/:filename', function(req, res) {
   res.sendFile(project_root + "/public/" + req.params.filename)

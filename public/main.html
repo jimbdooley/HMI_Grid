@@ -8,9 +8,11 @@
 <style>
 </style>
 <body>
-<span id="loading_text">Loading...</span>
+<span id="loading_text" style="font-size: 25px;padding: 20px;display: inline-block;">Loading...</span>
 <div id="top_bar">
-    <div id="top_bar_left"></div>
+    <div id="top_bar_left">
+        <div class="bar_scrollable" id="top_bar_scrollable"></div>
+    </div>
     <div id="top_bar_right">
         <div class="bar_right_left">
             <div class="bar_arrow_slider"></div>
@@ -23,7 +25,9 @@
 </div>
 <div id="main_body"></div>
 <div id="bot_bar">
-    <div id="bot_bar_left"></div>
+    <div id="bot_bar_left">
+        <div class="bar_scrollable" id="bot_bar_scrollable"></div>
+    </div>
     <div id="bot_bar_right">
         <div class="bar_right_left">
             <div class="bar_arrow_slider"></div>
@@ -37,11 +41,25 @@
 </body>
 <script src="state.js"></script>
 <script src="comm.js"></script>
-<script src="layout/parameters.js"></script>
+
+<script src="types/string_utils.js"></script>
+<script src="types/js_number_utils.js"></script>
+
+<script src="verify/verify_layout_parameters.js"></script>
+
+<script src="draw/draw_header.js"></script>
+<script src="draw/draw_element_parse_utils.js"></script>
+<script src="draw/draw_hmi_zero_screen.js"></script>
+<script src="draw/draw_element_path.js"></script>
+<script src="draw/draw_element_user_func.js"></script>
+<script src="draw/draw_screen.js"></script>
+
+<script src="control/navigation.js"></script>
+
 <script src="layout/layout_bar_utils.js"></script>
 <script src="layout/layout_navigation_bar.js"></script>
 <script src="layout/layout_top_bar.js"></script>
 <script src="layout/layout.js"></script>
-<script src="layout/resize_event.js"></script>
+<script src="init_listeners.js"></script>
 <script src="init.js"></script>
 </html> 

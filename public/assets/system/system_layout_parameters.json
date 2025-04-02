@@ -1,0 +1,24 @@
+{
+    "screens": [
+        "Railcar Unloading",
+        "Hopper Loading",
+        "Line C, D",
+        "Line E, F, G",
+        "Line H, I, J",
+        "Alarms",
+        "Trends",
+        "Logging"
+    ],
+    "includeHMI_ZeroScreen": true,
+    "edgeBuffer": 50,
+    "narrowModeThreshold": 0.8,
+    "navigationBarH": {
+        "narrow": 80,
+        "wide": 72
+    },
+    "navigationBarArrowWR": 0.22,
+    "topBarH": {
+        "narrow": 80,
+        "wide": 72
+    }
+}

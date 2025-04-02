@@ -56,8 +56,8 @@ function HMIG_checkForDrawablesAfterDelay(delay) {
   return new Promise(function(resolve, reject) {
     setTimeout(() => {
       let allDone = true
-      for (const key in HMIG_state.drawable) {
-        allDone &= HMIG_state.drawable[key].complete && HMIG_state.drawable[key].naturalWidth !== 0
+      for (const key in HMIG_state.drawable_assets) {
+        allDone &= HMIG_state.drawable_assets[key].complete && HMIG_state.drawable_assets[key].naturalWidth !== 0
       }
       resolve(allDone)
     }, delay)
@@ -65,14 +65,14 @@ function HMIG_checkForDrawablesAfterDelay(delay) {
 }
 
 async function HMIG_getAllAssets() {
-  HMIG_state.assets = JSON.parse(await HMIG_get("get_all_assets"))
+  HMIG_state.text_assets = JSON.parse(await HMIG_get("get_all_assets"))
   const drawable_files_obj = JSON.parse(await HMIG_get("get_drawable_filenames"))
   for (const drawable_files_key in drawable_files_obj) {
     const drawable_files = drawable_files_obj[drawable_files_key]
     for (let i = 0; i < drawable_files.length; i++) {
         const im = new Image()
         im.src = `drawable/${drawable_files_key}/${drawable_files[i]}`
-        HMIG_state.drawable[`${drawable_files_key}/${drawable_files[i]}`] = im
+        HMIG_state.drawable_assets[`${drawable_files_key}/${drawable_files[i]}`] = im
     }
   }
 
