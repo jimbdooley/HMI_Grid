@@ -11,8 +11,8 @@ function HMIG_styleNavBarButtons() {
         buttons[i].style.cursor = i == HMIG_state.currScreenI ? "default" : "pointer"
         buttons[i].style.textDecoration = i != HMIG_state.currScreenI ? "none" : "underline"
     }
-    for (let i = 0; i < HMIG_state.layoutParameters.screens.length; i++) {
-        const screen = document.getElementById(HMIG_state.layoutParameters.screens[i])
+    for (let i = 0; i < HMIG_state.projectParameters.screens.length; i++) {
+        const screen = document.getElementById(HMIG_state.projectParameters.screens[i])
         screen.style.display = i == HMIG_state.currScreenI ? "block" : "none"
     }
 }
@@ -34,14 +34,14 @@ function HMIG_navigationScrollDetected(e) {
     const maxScroll = botBarScrollable.scrollHeight - botBarScrollable.clientHeight;
     if (maxScroll <= 10) return
     const scrollRatio = botBarScrollable.scrollTop / maxScroll;
-    const index = Math.round(scrollRatio * (HMIG_state.layoutParameters.screens.length - 2))
+    const index = Math.round(scrollRatio * (HMIG_state.projectParameters.screens.length - 1))
     HMIG_navArrowState.targetScrollIndex = index
-    HMIG_navArrowState.targetScrollRatio = index / (HMIG_state.layoutParameters.screens.length - 2)
+    HMIG_navArrowState.targetScrollRatio = index / (HMIG_state.projectParameters.screens.length - 1)
 }
 
 function HMIG_navArrowPress(e, dir) {
     HMIG_navArrowState.targetScrollIndex -= dir
-    const maxIdx = HMIG_state.layoutParameters.screens.length - 2
+    const maxIdx = HMIG_state.projectParameters.screens.length - 1
     HMIG_navArrowState.targetScrollIndex = Math.min(maxIdx, HMIG_navArrowState.targetScrollIndex)
     HMIG_navArrowState.targetScrollIndex = Math.max(0, HMIG_navArrowState.targetScrollIndex)
     HMIG_navArrowState.targetScrollRatio = HMIG_navArrowState.targetScrollIndex / maxIdx

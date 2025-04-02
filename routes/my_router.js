@@ -13,6 +13,9 @@ router.get('/control/:filename', function(req, res) {
 router.get('/draw/:filename', function(req, res) {
   res.sendFile(project_root + "/public/draw/" + req.params.filename)
 })
+router.get('/init/:filename', function(req, res) {
+  res.sendFile(project_root + "/public/init/" + req.params.filename)
+})
 router.get('/layout/:filename', function(req, res) {
   res.sendFile(project_root + "/public/layout/" + req.params.filename)
 })

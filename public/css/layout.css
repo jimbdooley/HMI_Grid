@@ -11,7 +11,7 @@ html, body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: red;
+    background-color: #335;
 }
 
 #main_body {
@@ -38,15 +38,17 @@ html, body {
 }
 
 #bot_bar_right {
-    background-color: orange;
+    background-color: black;
     flex-direction: row;
 }
 #top_bar_left {
-    background-color: #335;
+    display: flex;
+    flex-direction: row;
+    background-color: green;
 }
 
 #top_bar_right {
-    background-color: orange;
+    background-color: black;
     flex-direction: row;
 }
 
@@ -62,4 +64,11 @@ html, body {
 .bar_right_right {
     display: flex;
     flex-direction: column;
+}
+
+#top_bar_read_write_info {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
 }

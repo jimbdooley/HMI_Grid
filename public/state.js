@@ -1,7 +1,7 @@
 
 const HMIG_state = {
-    screen_draw_parameters: null,
-    layoutParameters: null,
+    screen_info: null,
+    projectParameters: null,
     currScreenI: 0,
     layoutMode: "narrow",
     drawable_assets: {},

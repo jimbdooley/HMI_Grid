@@ -7,7 +7,7 @@ HMIG_elementGetBounds["path"] = (e, b) => {
             for (let j = 0; j < 100; j++) {
                 const th = startTh + (endTh - startTh) * j / 100
                 const x = e.path[i][1] + e.path[i][2] * Math.cos(th)
-                const y = e.path[i][y] + e.path[i][2] * Math.sin(th)
+                const y = e.path[i][1] + e.path[i][2] * Math.sin(th)
                 b[0] = Math.min(b[0], x)
                 b[2] = Math.max(b[2], x)
                 b[1] = Math.min(b[1], y)

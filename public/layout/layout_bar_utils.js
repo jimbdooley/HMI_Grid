@@ -1,19 +1,57 @@
 
 
 
-function HMIG_layoutBarArrows(_useArrows, w, h, narrowMode, leftId, rightId) {
+function HMIG_layoutBarArrows(isTop, _useArrows, w, h, narrowMode, leftId, rightId) {
     const useArrows = _useArrows && narrowMode
-    const barRightW = !useArrows ? 0 : Math.round(w * HMIG_state.layoutParameters.navigationBarArrowWR)
+    const barRightW = !useArrows ? 0 : Math.round(w * HMIG_state.projectParameters.navigationBarArrowWR)
     const barLeftW = w - barRightW
-    document.getElementById(leftId).style.display = "block"
+    document.getElementById(leftId).style.display = isTop ? "flex" : "block"
     document.getElementById(rightId).style.display = narrowMode ? "flex" : "none"
     document.getElementById(leftId).style.width = barLeftW + "px"
     document.getElementById(rightId).style.width = barRightW + "px"
     document.getElementById(leftId).style.height = h + "px"
     document.getElementById(rightId).style.height = h + "px"
 
+    let logoW = 0
+    if (isTop && !narrowMode) {
+        const logo = document.getElementById("top_bar_logo")
+        let logoH = Math.floor(0.7 * h)
+        logoW = logoH * HMIG_state.drawable_assets["logo/logo.png"].width 
+        logoW = Math.round(logoW / HMIG_state.drawable_assets["logo/logo.png"].height)
+        let logoMarginTop = Math.floor((h - logoH) / 2)
+        const originalLogoMarginTop = logoMarginTop
+        if (logoW > 0.2 * w) {
+            logoH *= 0.2 * w / logoW
+            logoW = 0.2 * w
+            logoMarginTop = Math.floor((h - logoH) / 2)
+        }
+        if (logoH < 0.5 * h) {
+            logo.style.display = "none"
+            logoW = 0
+        } else {
+            logo.style.display = "block"
+            logo.style.width = logoW + "px"
+            logo.style.height = logoH + "px"
+            logo.style.marginTop = logoMarginTop + "px"
+            logo.style.marginLeft = originalLogoMarginTop + "px"
+            logo.style.marginRight = originalLogoMarginTop + "px"
+            logoW += 2 * logoMarginTop
+        }
+    } else if (isTop && narrowMode) {
+        document.getElementById("top_bar_logo").style.display = "none"
+    }
+
+    let readWriteInfoW = 0
+    if (isTop) {
+        readWriteInfoW = narrowMode ? 50 : 150
+        const readWriteInfo = document.getElementById("top_bar_read_write_info")
+        readWriteInfo.style.backgroundColor = HMIG_state.projectParameters.readOnly ? "rgb(86, 252, 3)" : "rgb(252, 169, 3)"
+        readWriteInfo.style.width = readWriteInfoW + "px"
+        readWriteInfo.style.height = h + "px"
+    }
+
     const scrollable = document.getElementById(leftId).getElementsByClassName("bar_scrollable")[0]
-    scrollable.style.width = barLeftW + "px"
+    scrollable.style.width = barLeftW - logoW - readWriteInfoW + "px"
     scrollable.style.height = h + "px"
     scrollable.style.display = "flex"
     scrollable.style.flexDirection = narrowMode ? "column" : "row"

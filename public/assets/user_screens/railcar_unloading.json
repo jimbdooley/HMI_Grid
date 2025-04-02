@@ -24,20 +24,20 @@
             ]
         },
         {
-            "zOrder": -1,
+            "zOrder": 1,
             "type": "user_draw_function",
             "bounds_x0_y0_x1_y1": [0, 0, 50, 50],
             "function_body_filename": "blinky.js"
         },
         {
-            "zOrder": -1,
+            "zOrder": 1,
             "doDraw": "t => Date.now() % 2000 < 1000",
             "type": "user_draw_function",
             "bounds_x0_y0_x1_y1": [100, 100, 150, 150],
             "function_body": "ctx.fillStyle = 'green'; ctx.fillRect(b[0], b[1], b[2]-b[0], b[3]-b[1]);"
         },
         {
-            "zOrder": -1,
+            "zOrder": 1,
             "doDraw": "t => Date.now() % 2000 >= 1000",
             "type": "user_draw_function",
             "bounds_x0_y0_x1_y1": [100, 100, 150, 150],

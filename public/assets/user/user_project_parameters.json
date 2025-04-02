@@ -1,0 +1,25 @@
+{
+    "screens": [
+        "railcar_unloading.json",
+        "hopper_loading.json",
+        "line_c_d.json",
+        "line_e_f_g.json",
+        "line_h_i_j.json",
+        "alarms.json",
+        "trends.json",
+        "logging.json"
+    ],
+    "readOnly": false,
+    "includeHMI_ZeroScreen": false,
+    "edgeBuffer": 50,
+    "narrowModeThreshold": 0.8,
+    "navigationBarH": {
+        "narrow": 80,
+        "wide": 72
+    },
+    "navigationBarArrowWR": 0.22,
+    "topBarH": {
+        "narrow": 80,
+        "wide": 72
+    }
+}

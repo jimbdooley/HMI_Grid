@@ -11,6 +11,10 @@
 <span id="loading_text" style="font-size: 25px;padding: 20px;display: inline-block;">Loading...</span>
 <div id="top_bar">
     <div id="top_bar_left">
+        <div id="top_bar_read_write_info">
+            <span id="top_bar_read_write_info_triangle">⚠️</span>
+            <span id="top_bar_read_write_info_text">R/W</span>
+        </div>
         <div class="bar_scrollable" id="top_bar_scrollable"></div>
     </div>
     <div id="top_bar_right">
@@ -22,6 +26,7 @@
             <button class="bar_down_arrow" id="top_bar_down_arrow">&#9660;</button>
         </div>
     </div>
+    <img id="top_bar_logo" src="drawable/logo/logo.png">
 </div>
 <div id="main_body"></div>
 <div id="bot_bar">
@@ -60,6 +65,8 @@
 <script src="layout/layout_navigation_bar.js"></script>
 <script src="layout/layout_top_bar.js"></script>
 <script src="layout/layout.js"></script>
-<script src="init_listeners.js"></script>
-<script src="init.js"></script>
+
+<script src="init/init_canvas_screen.js"></script>
+<script src="init/init_listeners.js"></script>
+<script src="init/init.js"></script>
 </html> 

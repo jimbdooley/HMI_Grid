@@ -1,9 +1,9 @@
 
 HMIG_elementGetBounds["user_draw_function"] = (e, b) => {
-    b[0] = e.bounds_x0_y0_x1_y1[0]
-    b[1] = e.bounds_x0_y0_x1_y1[1]
-    b[2] = e.bounds_x0_y0_x1_y1[2]
-    b[3] = e.bounds_x0_y0_x1_y1[3]
+    b[0] = Math.min(e.bounds_x0_y0_x1_y1[0], b[0])
+    b[1] = Math.min(e.bounds_x0_y0_x1_y1[1], b[1])
+    b[2] = Math.max(e.bounds_x0_y0_x1_y1[2], b[2])
+    b[3] = Math.max(e.bounds_x0_y0_x1_y1[3], b[3])
 }
 
 HMIG_elementDraw["user_draw_function"] = (e, t, ctx, b) => {
