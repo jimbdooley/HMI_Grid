@@ -32,6 +32,7 @@ function HMIG_navigationScrollDetected(e) {
     const botBarLeft = document.getElementById("bot_bar_left")
     const botBarScrollable = botBarLeft.getElementsByClassName("bar_scrollable")[0]
     const maxScroll = botBarScrollable.scrollHeight - botBarScrollable.clientHeight;
+    if (maxScroll <= 10) return
     const scrollRatio = botBarScrollable.scrollTop / maxScroll;
     const index = Math.round(scrollRatio * (HMIG_state.layoutParameters.screens.length - 2))
     HMIG_navArrowState.targetScrollIndex = index
