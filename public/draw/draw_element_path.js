@@ -2,12 +2,17 @@
 HMIG_elementGetBounds["path"] = (e, b) => {
     for (let i = 0; i < e.path.length; i++) {
         if (e.path[i][0] == "arc") {
-            const startTh = e.path[i][4]
-            const endTh = e.path[i][5]
+            let startTh = e.path[i][4] * Math.PI / 180
+            let endTh = e.path[i][5] * Math.PI / 180
+            if (e.path[i][6]) {
+                const temp = startTh
+                startTh = endTh
+                endTh = temp + 2 * Math.PI
+            }
             for (let j = 0; j < 100; j++) {
                 const th = startTh + (endTh - startTh) * j / 100
-                const x = e.path[i][1] + e.path[i][2] * Math.cos(th)
-                const y = e.path[i][1] + e.path[i][2] * Math.sin(th)
+                const x = e.path[i][1] + e.path[i][3] * Math.cos(th)
+                const y = e.path[i][2] + e.path[i][3] * Math.sin(th)
                 b[0] = Math.min(b[0], x)
                 b[2] = Math.max(b[2], x)
                 b[1] = Math.min(b[1], y)
@@ -30,7 +35,9 @@ HMIG_elementDraw["path"] = (e, t, ctx, b) => {
     ctx.beginPath()
     for (let i = 0; i < e.path.length; i++) {
         if (e.path[i][0] == "arc") {
-            ctx.arc(e.path[i][1], e.path[i][2], e.path[i][3], e.path[i][4], e.path[i][5])
+            const startTh = e.path[i][4] * Math.PI / 180
+            const endTh = e.path[i][5] * Math.PI / 180
+            ctx.arc(e.path[i][1], e.path[i][2], e.path[i][3], startTh, endTh, e.path[i][6])
         }
         if (e.path[i][0] == "moveTo") {
             ctx.moveTo(e.path[i][1], e.path[i][2])

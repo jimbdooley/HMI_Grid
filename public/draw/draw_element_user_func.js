@@ -13,4 +13,17 @@ HMIG_elementDraw["user_draw_function"] = (e, t, ctx, b) => {
 
 HMIG_elementParseFunctions["user_draw_function"] = (filename, i, e) => {
     HMIG_parseDoDrawFunc(filename, i, e)
+    if ("function_body" in e && typeof e.function_body == "string") {
+        e.draw_function = new Function("t","ctx", "b", e.function_body)
+        return
+    }
+    if ("function_body_filename" in e && typeof e.function_body_filename == "string") {
+        const asset_path = "user_draw_functions/" + e.function_body_filename
+        if (asset_path in HMIG_state.text_assets) {
+            e.draw_function = new Function("t", "ctx", "b", HMIG_state.text_assets[asset_path])
+            return
+        }
+    }
+    HMIG_state.startUpLog.push([0, `Error parsing function in file ${filename}, element index ${i}, using default draw function.`])
+    e.draw_function = HMIG_defaultUserFunc
 }

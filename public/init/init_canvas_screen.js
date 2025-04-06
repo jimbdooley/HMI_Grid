@@ -18,11 +18,20 @@ function HMIG_initCanvasScreen(screenI) {
             element.zOrder = 0
         }
         HMIG_elementGetBounds[element.type](element, screenInfo.bounds)
-        HMIG_elementParseFunctions["path"](HMIG_state.projectParameters.screens[screenI], i, element)
+        HMIG_elementParseFunctions[element.type](HMIG_state.projectParameters.screens[screenI], i, element)
         
     }
-    const w = Math.max(10, screenInfo.bounds[2] - screenInfo.bounds[0])
-    const h = Math.max(10, screenInfo.bounds[3] - screenInfo.bounds[1])
+    for (let i = screenInfo.elements.length - 1; i > 0; i--) {
+        for (let j = 0; j < i; j++) {
+            if (screenInfo.elements[j].zOrder > screenInfo.elements[i].zOrder) {
+                const temp = screenInfo.elements[j]
+                screenInfo.elements[j] = screenInfo.elements[i]
+                screenInfo.elements[i] = temp
+            }
+        }
+    }
+    const w = Math.max(10, screenInfo.bounds[2] + HMIG_state.projectParameters.edgeBuffer)
+    const h = Math.max(10, screenInfo.bounds[3] + HMIG_state.projectParameters.edgeBuffer)
     HMIG_state.screen_info[screenI]["canvas"].width = w
     HMIG_state.screen_info[screenI]["canvas"].height = h
 }

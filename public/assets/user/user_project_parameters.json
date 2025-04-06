@@ -11,7 +11,7 @@
     ],
     "readOnly": false,
     "includeHMI_ZeroScreen": false,
-    "edgeBuffer": 50,
+    "edgeBuffer": 20,
     "narrowModeThreshold": 0.8,
     "navigationBarH": {
         "narrow": 80,
