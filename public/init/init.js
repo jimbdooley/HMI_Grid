@@ -16,8 +16,17 @@ async function HMIG_init() {
         }
     }
     if (HMIG_loadDidFail(HMIG_verifyLayoutParameters(HMIG_state.projectParameters))) return false
-
+    if (HMIG_loadDidFail(HMIG_initTags())) return false
     if (HMIG_loadDidFail(HMIG_initScreens())) return false
+    if ("user/user_startup_script.js" in HMIG_state.text_assets) {
+        const startupScript = HMIG_state.text_assets["user/user_startup_script.js"]
+        try {
+            eval(startupScript)
+        } catch (e) {
+            HMIG_loadDidFail("Failed to run startup script: " + e.message)
+            return false
+        }
+    }
 
     const botBarScrollable = document.getElementById("bot_bar_left").getElementsByClassName("bar_scrollable")[0]
     for (let i = 0; i < HMIG_state.projectParameters.screens.length; i++) {

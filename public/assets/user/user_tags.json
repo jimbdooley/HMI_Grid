@@ -1,0 +1,10 @@
+{
+    "test_silo_name": {
+        "type": "string",
+        "start_value": "Silo 1"
+    },
+    "test_int": {
+        "type": "int",
+        "start_value": 71
+    }
+}

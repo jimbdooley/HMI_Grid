@@ -1,5 +1,13 @@
 {
     "name": "Line C, D",
     "screenType": "canvas",
-    "elements": []
+    "elements": [
+
+        {
+            "zOrder": 1,
+            "type": "user_draw_function",
+            "bounds_x0_y0_x1_y1": [100, 100, 200, 220],
+            "function_body": "USER_drawMediumSilo(ctx, b, 'test_int');"
+        }
+    ]
 }

@@ -2,6 +2,13 @@
     "name": "Railcar Unloading",
     "screenType": "canvas",
     "elements": [
+
+        {
+            "zOrder": 1,
+            "type": "user_draw_function",
+            "bounds_x0_y0_x1_y1": [100, 600, 1200, 720],
+            "function_body": "USER_drawMediumSilo(ctx, b, 'test_int');"
+        },
         {
             "zOrder": 5,
             "type": "path",
