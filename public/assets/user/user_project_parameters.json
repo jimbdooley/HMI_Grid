@@ -10,7 +10,8 @@
         "logging.json"
     ],
     "readOnly": false,
-    "includeHMI_ZeroScreen": false,
+    "includeHMI_ZeroScreen": true,
+    "HMI_ZeroScreenName": "Settings",
     "edgeBuffer": 40,
     "narrowModeThreshold": 0.8,
     "navigationBarH": {

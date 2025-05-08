@@ -1,9 +1,12 @@
 
 const HMIG_state = {
+    demo_id: null,
     screen_info: null,
+    screen_scale_dx_dy: [],
     projectParameters: null,
     currScreenI: 0,
     layoutMode: "narrow",
+    commands: {},
     drawable_assets: {},
     text_assets: {},
     assetsRdy: false,

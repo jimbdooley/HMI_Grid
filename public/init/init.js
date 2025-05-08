@@ -5,6 +5,29 @@ function HMIG_loadDidFail(msg) {
     return true
 }
 
+const getdemo_id = (() => {
+    const demo_idLocalStorageKey = "demo_idLocalStorageKey"
+    const demo_idChars = "abcdefghijklmnopqrstuvwxyz0123456789"
+    return function() {
+        const demo_id_idx = window.location.href.indexOf("demo_id=")
+        if (-1 != demo_id_idx) {
+            const idChars = []
+            for (let i = 8 + demo_id_idx; i < window.location.href.length; i++) {
+                if (-1 == demo_idChars.indexOf(window.location.href[i])) break;
+                idChars.push(window.location.href[i])
+            }
+            const idString = idChars.join("")
+            localStorage.setItem(demo_idLocalStorageKey, idString);
+            return idString
+        } else if (localStorage.getItem(demo_idLocalStorageKey) !== null) {
+            return localStorage.getItem(demo_idLocalStorageKey)
+        } else {
+            return null
+        }
+    }
+})();
+
+
 async function HMIG_init() {
     await HMIG_getAllAssets()
     for (const filename in HMIG_state.text_assets) {
@@ -15,9 +38,12 @@ async function HMIG_init() {
             return HMIG_loadDidFail("Failed to parse " + filename + ": " + e.message) 
         }
     }
+    HMIG_state.demo_id = getdemo_id()
+    if (HMIG_state.demo_id == null) console.warn("unknown demo_id")
     if (HMIG_loadDidFail(HMIG_verifyLayoutParameters(HMIG_state.projectParameters))) return false
     if (HMIG_loadDidFail(HMIG_initTags())) return false
     if (HMIG_loadDidFail(HMIG_initScreens())) return false
+    if (HMIG_loadDidFail(HMIG_initCommands())) return false
     if ("user/user_startup_script.js" in HMIG_state.text_assets) {
         const startupScript = HMIG_state.text_assets["user/user_startup_script.js"]
         try {

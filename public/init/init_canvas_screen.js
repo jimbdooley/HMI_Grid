@@ -4,11 +4,14 @@ function HMIG_initCanvasScreen(screenI) {
     const screenDiv = document.getElementById(HMIG_state.projectParameters.screens[screenI])
     HMIG_state.screen_info[screenI]["canvas"] = document.createElement("canvas")
     HMIG_state.screen_info[screenI]["ctx"] = HMIG_state.screen_info[screenI]["canvas"].getContext("2d")
-    HMIG_state.screen_info[screenI]["canvas"].style.backgroundColor = "white"
+    HMIG_state.screen_info[screenI]["ctx"].imageSmoothingEnabled = true
+    //HMIG_state.screen_info[screenI]["canvas"].style.backgroundColor = "white"
     screenDiv.appendChild(HMIG_state.screen_info[screenI]["canvas"])
     screenInfo.bounds = [99999, 99999, 0, 0]
     for (let i = 0; i < screenInfo.elements.length; i++) {
         const element = screenInfo.elements[i]
+        element.elementI = i
+        element.lastPosScale = [-1, -1, -1, -1]
         if (!("zOrder" in element)) { element.zOrder = 0 }
         if (typeof element.zOrder == "string") {
             element.zOrder = Number(element.zOrder)
@@ -18,8 +21,24 @@ function HMIG_initCanvasScreen(screenI) {
             element.zOrder = 0
         }
         HMIG_elementGetBounds[element.type](element, screenInfo.bounds)
-        HMIG_elementParseFunctions[element.type](HMIG_state.projectParameters.screens[screenI], i, element)
-        
+        HMIG_elementParseFunctions[element.type](screenDiv, i, element)
+        if (element.type == "image" || element.type == "html_image") {
+            const img = HMIG_state.drawable_assets[element.drawable_loc]
+            if (element.bxywh[2] == -1 && element.bxywh[3] == -1) {
+                element.bxywh[2] = img.width
+                element.bxywh[3] = img.height
+            } else if (element.bxywh[2] == -1) {
+                element.bxywh[2] = img.width * element.bxywh[3] / img.height
+            } else if (element.bxywh[3] == -1) {
+                element.bxywh[3] = img.height * element.bxywh[2] / img.width
+            }
+            element.bxy01 = [
+                element.bxywh[0],
+                element.bxywh[1],
+                element.bxywh[0] + element.bxywh[2],
+                element.bxywh[1] + element.bxywh[3]
+            ]
+        }
     }
     for (let i = screenInfo.elements.length - 1; i > 0; i--) {
         for (let j = 0; j < i; j++) {

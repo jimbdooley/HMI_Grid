@@ -1,0 +1,61 @@
+{
+    "commands": [
+        {
+            "n": "0",
+            "desc": "Set Bridge_Valve_0_0's position",
+            "nValuesExpected": 1
+        },
+        {
+            "n": "1",
+            "desc": "Set Bridge_Valve_0_1's position",
+            "nValuesExpected": 1
+        },
+        {
+            "n": "2",
+            "desc": "Set Bridge_Valve_0_2's position",
+            "nValuesExpected": 1
+        },
+        {
+            "n": "3",
+            "desc": "Set Bridge_Valve_1_0's position",
+            "nValuesExpected": 1
+        },
+        {
+            "n": "4",
+            "desc": "Set Bridge_Valve_1_1's position",
+            "nValuesExpected": 1
+        },
+        {
+            "n": "5",
+            "desc": "Set Bridge_Valve_1_2's position",
+            "nValuesExpected": 1
+        },
+        {
+            "n": "6",
+            "desc": "Set Bridge_Valve_2_0's position",
+            "nValuesExpected": 1
+        },
+        {
+            "n": "7",
+            "desc": "Set Bridge_Valve_2_1's position",
+            "nValuesExpected": 1
+        },
+        {
+            "n": "8",
+            "desc": "Set Bridge_Valve_2_2's position",
+            "nValuesExpected": 1
+        },
+        {
+            "n": "9",
+            "desc": "Set Bridge_Valve_3_0's position",
+            "nValuesExpected": 1
+        },
+        {
+            "n": "MedSiloSlide",
+            "desc": "Set intermediate hopper's slide valve position.",
+            "nValuesExpected": 2
+        }
+        
+
+    ]
+}

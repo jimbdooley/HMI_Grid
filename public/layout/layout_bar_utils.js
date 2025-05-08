@@ -44,10 +44,23 @@ function HMIG_layoutBarArrows(isTop, _useArrows, w, h, narrowMode, leftId, right
     let readWriteInfoW = 0
     if (isTop) {
         readWriteInfoW = narrowMode ? 50 : 150
+        const readOnly = HMIG_state.projectParameters.readOnly
         const readWriteInfo = document.getElementById("top_bar_read_write_info")
-        readWriteInfo.style.backgroundColor = HMIG_state.projectParameters.readOnly ? "rgb(86, 252, 3)" : "rgb(252, 169, 3)"
+        readWriteInfo.style.backgroundColor = readOnly ? "rgb(86, 222, 123)" : "rgb(202, 149, 3)"
         readWriteInfo.style.width = readWriteInfoW + "px"
         readWriteInfo.style.height = h + "px"
+        const rwInfoText = document.getElementById("top_bar_read_write_info_text")
+        rwInfoText.textContent = readOnly 
+            ? (narrowMode ? "R" : "Read Only") 
+            : (narrowMode ? "R/W" : "Read/Write")
+        const rwInfoTriangle = document.getElementById("top_bar_read_write_info_triangle")
+        const subElH = (readOnly ? h : Math.floor(0.5 * h)) + "px"
+        rwInfoTriangle.style.display = readOnly ? "none" : "inline-block"
+        rwInfoTriangle.style.height = subElH
+        rwInfoText.style.height = subElH
+        rwInfoText.style.marginTop = !readOnly ? "0px" : Math.round(0.3*h) + "px"
+        rwInfoText.style.fontSize = Math.round((narrowMode ? 0.247 : 0.32) * h) + "px"
+        rwInfoTriangle.style.fontSize = Math.round((narrowMode ? 0.247 : 0.32) * h) + "px"
     }
 
     const scrollable = document.getElementById(leftId).getElementsByClassName("bar_scrollable")[0]

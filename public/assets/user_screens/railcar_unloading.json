@@ -6,7 +6,7 @@
         {
             "zOrder": 1,
             "type": "user_draw_function",
-            "bounds_x0_y0_x1_y1": [100, 600, 1200, 720],
+            "bxy01": [100, 600, 1200, 720],
             "function_body": "USER_drawMediumSilo(ctx, b, 'test_int');"
         },
         {
@@ -33,21 +33,21 @@
         {
             "zOrder": 1,
             "type": "user_draw_function",
-            "bounds_x0_y0_x1_y1": [0, 0, 50, 50],
+            "bxy01": [0, 0, 50, 50],
             "function_body_filename": "blinky.js"
         },
         {
             "zOrder": 1,
             "doDraw": "return Date.now() % 2000 < 1000",
             "type": "user_draw_function",
-            "bounds_x0_y0_x1_y1": [100, 100, 150, 150],
+            "bxy01": [100, 100, 150, 150],
             "function_body": "ctx.fillStyle = 'green'; ctx.fillRect(b[0], b[1], b[2]-b[0], b[3]-b[1]);"
         },
         {
             "zOrder": 1,
             "doDraw": "return Date.now() % 2000 >= 1000;",
             "type": "user_draw_function",
-            "bounds_x0_y0_x1_y1": [100, 100, 150, 150],
+            "bxy01": [100, 100, 150, 150],
             "function_body": "ctx.fillStyle = 'black'; ctx.fillRect(b[0], b[1], b[2]-b[0], b[3]-b[1]);"
         },
         {
@@ -55,21 +55,35 @@
             "doDraw": "return true",
             "type": "image",
             "drawable_loc": "logo/logo.png",
-            "xywh": [150, 20, 100, -1]
+            "bxywh": [150, 20, 100, -1]
         },
         {
             "zOrder": 0,
             "doDraw": "return true",
             "type": "image",
             "drawable_loc": "logo/logo.png",
-            "xywh": [150, 90, -1, 120]
+            "bxywh": [150, 90, -1, 120]
         },
         {
-            "zOrder": 0,
+            "zOrder": 1,
+            "doDraw": "return true",
+            "type": "html_image",
+            "drawable_loc": "logo/logo.png",
+            "bxywh": [200, 120, -1, 120]
+        },
+        {
+            "zOrder": 1,
+            "doDraw": "return true",
+            "type": "user_draw_function",
+            "bxy01": [50, 240, 170, 360],
+            "function_body": "ctx.fillStyle = 'purple'; ctx.fillRect(b[0], b[1], b[2]-b[0], b[3]-b[1]);"
+        },
+        {
+            "zOrder": 3,
             "doDraw": "return true",
             "type": "image",
             "drawable_loc": "logo/logo.png",
-            "xywh": [50, 240, 50, 120]
+            "bxywh": [50, 240, 120, 120]
         }
     ]
 }

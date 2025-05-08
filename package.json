@@ -2,13 +2,23 @@
   "name": "hmi_grid",
   "version": "1.0.0",
   "description": "Make simple browser HMI's for desktop and mobile.",
+  "homepage": "https://github.com/jimbdooley/HMI_Grid#readme",
+  "bugs": {
+    "url": "https://github.com/jimbdooley/HMI_Grid/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jimbdooley/HMI_Grid.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "mssql": "^11.0.1"
   }
 }

@@ -47,8 +47,8 @@ function HMIG_verifyLayoutParameters() {
     if (ps.screens == null) {
         return "Parameter 'screens' is not an array of strings in user_project_parameters.json"
     }
-    if (-1 != ps.screens.indexOf("HMI-Zero")) {
-        return "Parameter 'screens' contains 'HMI-Zero' which is reserved for internal use."
+    if (-1 != ps.screens.indexOf("hmi_zero.json")) {
+        return "Parameter 'screens' contains 'hmi_zero.json' which is reserved for internal use."
     }
     for (let i = 0; i < ps.screens.length - 1; i++) {
         for (let j = i + 1; j < ps.screens.length; j++) {

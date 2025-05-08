@@ -69,6 +69,8 @@ html, body {
 #top_bar_read_write_info {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin: 0;
     padding: 0;
 }

@@ -10,7 +10,12 @@ function HMIG_draw() {
         screenInfo.ctx.clearRect(0, 0, screenInfo.canvas.width, screenInfo.canvas.height)
         for (let i = 0; i < screenInfo.elements.length; i++) {
             const element = screenInfo.elements[i]
-            HMIG_elementDraw[element.type](element, null, screenInfo.ctx, screenInfo.elements[i].bounds_x0_y0_x1_y1)
+            HMIG_elementDraw[element.type](
+                element, 
+                null, 
+                screenInfo.ctx, 
+                screenInfo.elements[i].bxy01
+            )
         }
     }
 }
